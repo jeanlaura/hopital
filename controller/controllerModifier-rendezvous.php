@@ -5,9 +5,14 @@
 	// Instanciation de l'objet Hospital contenant les méthodes utilisées
 	$patientsOBJ = new patients();
 	$appointmentsOBJ = new appointments();
-	$arrayPatientRDV = $patientsOBJ->listPatients();
-	$rendezvousSuccess = false;
-	$successPage = 'Rendez-vous ajouté'; // message personnalisé pour la validation
+	$arrayPatientRDV = $appointmentsOBJ->listAppointments(); //Tableau qui reprend la liste des rdvs
+    $arrayPatients = $patientsOBJ->listPatients(); //Tableau qui reprend la liste des patients
+	if (isset($_GET['idAppointment'])) {
+        $appointmentsOBJ->id = $_GET['idAppointment']; //Récupère id initialisé comme idAppointments
+        $detailsRdv = $appointmentsOBJ->displayAppointment(); //Reprends les informations que pour un seul rdv
+    }
+    $updateRendezVous = false;
+	$successPage = 'Rendez-vous modifié'; // message personnalisé pour la validation
 	$link = 'liste-rendezvous.php';
 	$linkText = 'des rendez-vous';
 	// Variables pour l'horaire $dateTime
@@ -28,15 +33,23 @@
 	        $inputID = test_input($_POST['selectId']);
 	        unset($arrayError['patientErr']);
 	    }
+
+
 	    // JOUR
-	    if (empty($_POST['inputDate']) || $_POST['inputDate'] < $today) {
-	        $arrayError['dayErr'] = 'Un jour correct est requis';
-	    } else {
-	        $dateInput = test_input($_POST['inputDate']);
-	        if (preg_match($regexDate, $dateInput)) {
-	            unset($arrayError['dayErr']);
-	        }
+	    if (isset($_POST['inputDate'])){
+	    	$dateInput = test_input($_POST['inputDate']);
+	    	if ($dateInput < $today) {
+	        	$arrayError['dayErr'] = 'La date est antérieur à la date d\'aujourd\'hui !';
+	    	}
+	    	if (!preg_match($regexDate, $dateInput)) {
+	    		$arrayError['dayErr'] = 'Le format de la date est incorrect !';
+	    	}
+	    	if (empty($dateInput)) {
+	    		$arrayError['dayErr'] = 'Veuillez insérer une date correct ! 😡';
+	    	}
 	    }
+
+
 	    // HEURE
 	    if (empty($_POST['selectTime'])) {
 	        $arrayError['hourErr'] = 'Une heure est requise';
@@ -49,13 +62,15 @@
 
 	    // VALIDER
 	    if (isset($_POST['submit']) && count($arrayError) == 0) {
+	    	$appointmentsOBJ->id = $_GET['idAppointment']; //id du rdv
 	        $appointmentsOBJ->idPatients = $_POST['selectId']; // id du patient sélectionné
 	        $appointmentsOBJ->dateHour = $dateInput . ' ' . $hourInput; // mise en forme pour l'ajout à la table appointments
-	        $testDoubleEntry = $appointmentsOBJ->addRDV(); // exécute la méthode permettant l'ajout de rendez-vous
+	        //var_dump($_POST['selectId']);
+	        $testDoubleEntry = $appointmentsOBJ->modifyAppointment(); // exécute la méthode permettant la modification du rendez-vous
 	        if ($testDoubleEntry === false) {
-	            $rendezvousSuccess = false; // variable mise à false
+	            $updateRendezVous = false; // variable mise à false
 	        } else {
-	            $rendezvousSuccess = true; // variable mise à true pour cacher le formulaire
+	            $updateRendezVous = true; // variable mise à true pour cacher le formulaire
 	        }
 	    }
 	}

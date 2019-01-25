@@ -13,7 +13,7 @@
          */
         function addPatient() {
             //
-            $sql = $this->database->prepare('INSERT INTO patients (lastname, firstname, birthdate, phone, mail) VALUES (:lastname, :firstname, :birthdate, :phone, :mail)');
+            $sql = $this->database->prepare('INSERT INTO `patients` (lastname, firstname, birthdate, phone, mail) VALUES (:lastname, :firstname, :birthdate, :phone, :mail)');
             $sql->bindValue(':lastname',$this->lastname,PDO::PARAM_STR);
             $sql->bindValue(':firstname',$this->firstname,PDO::PARAM_STR);
             $sql->bindValue(':birthdate',$this->birthdate,PDO::PARAM_STR);
@@ -23,7 +23,7 @@
         }
         // Exercice2
         function listPatients() {
-            $sql = $this->database->query('SELECT * FROM patients');
+            $sql = $this->database->query('SELECT * FROM `patients`');
             $result = $sql->fetchAll(PDO::FETCH_OBJ);
             return $result;
         }

@@ -1,0 +1,16 @@
+.marginTop{
+	margin-top: 20px !important;
+}
+.headerCard{
+	/*text-align: center;*/
+}
+.headerCard .mt-3, .headerCard .my-3{
+	margin-top: 0px !important;
+}
+.h1, h1{
+	font-size: 1.5rem !important;
+}
+.h2, h2 {
+    font-size: 1.25rem !important;
+    margin-top: 10px;
+}

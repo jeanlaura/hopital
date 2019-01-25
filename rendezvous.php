@@ -1,14 +1,12 @@
-<?php
-    require_once 'controller/controllerProfil-patient.php';
-?>
+<?php require_once 'controller/controllerRendezvous.php'; ?>
 <?php include 'header.php'; ?>
 <!-- CONTENT PAGE -->
 <div class="container marginTop">
     <div class="row">
         <div class="col align-self-center">
-            <?php if(!$idPatientExist){ ?>
-                <h1>Ce patient n'existe pas !</h1>
-                <a href="liste-patient.php" class="btn btn-primary">Retour liste patients</a>
+            <?php if(!$idExist){ ?>
+                <h1>Ce rendez-vous n'existe pas ! Dommage pour toi 😂 T'es vraiment trop nul !</h1>
+                <a href="liste-rendezvous.php" class="btn btn-primary">Retour liste des rendez-vous</a>
             <?php }else{ ?>
                 <!-- Card -->
                 <div class="card">
@@ -17,7 +15,7 @@
                         <!-- Title -->
                         <h4 class="card-title" align="center">
                             <a>
-                                <?= $patient->lastname ?> <?= $patient->firstname ?>
+                                <?= $rdv->lastname ?> <?= $rdv->firstname ?>
                             </a>
                         </h4>
                     </div>
@@ -27,40 +25,28 @@
                         <ul class="list-group">
                             <li class="list-group-item">
                                 <div class="md-v-line"></div>
-                                <p class="card-text">Nom : <?= $patient->lastname ?></p>
+                                <p class="card-text">Nom : <?= $rdv->lastname ?></p>
                             </li>
                             <li class="list-group-item">
                                 <div class="md-v-line"></div>
-                                <p class="card-text">Prénom : <?= $patient->firstname ?></p>
+                                <p class="card-text">Prénom : <?= $rdv->firstname ?></p>
                             </li>
                             <li class="list-group-item">
                                 <div class="md-v-line"></div>
-                                <p class="card-text">Adresse de messagerie : <?= $patient->mail ?></p>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="md-v-line"></div>
-                                <p class="card-text">Date de naissance : <?= $patient->birthdate ?></p>
-                            </li>
-                            <li class="list-group-item">
-                                <!-- <div class="md-v-line"></div> -->
-                                <p class="card-text">Numéro de téléphone : <?= $patient->phone ?></p>
+                                <p class="card-text">Date et heure du rendez-vous : <?= $rdv->date ?> <?= $rdv->hour ?></p>
                             </li>
                         </ul>
                     </div>
                     <!-- Card footer -->
                     <div class="card-footer" align="right">
                         <!-- Button -->
-                        <a href="modifier-patient.php?id=<?= $patient->id ?>" class="btn btn-warning">Modifier</a>
+                        <a href="modifier-rendezvous.php?idAppointment=<?= $rdv->id ?>" class="btn btn-warning">Modifier</a>
                         <a href="" class="btn btn-danger">Supprimer</a>
-                        <a href="liste-patient.php" class="btn btn-primary">Retour à la liste des patients</a>
+                        <a href="liste-rendezvous.php" class="btn btn-primary">Retour à la liste des rendrez-vous</a>
                     </div>
                 </div>
                 <!-- Card -->
             <?php } ?>
-            <?php foreach ($arrayPatientRDV as $rdv) { ?>
-                <?= $rdv->firstname ?> <?= $rdv->lastname ?>
-            <?php } ?>
-
         </div>
     </div>
 </div>
