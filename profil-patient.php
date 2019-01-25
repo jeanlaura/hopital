@@ -57,11 +57,40 @@
                 </div>
                 <!-- Card -->
             <?php } ?>
-            <?php foreach ($arrayPatientRDV as $rdv) { ?>
-                <?= $rdv->firstname ?> <?= $rdv->lastname ?>
-            <?php } ?>
-
         </div>
     </div>
+    <div class="row">
+        <div class="col align-self-center">
+            <!-- Card -->
+            <div class="card">
+                <!-- Card header -->
+                <div class="card-header headerCard">
+                    <!-- Title -->
+                    <h4 class="card-title" align="center">
+                        <a>
+                            Liste des rendez-vous
+                        </a>
+                    </h4>
+                </div>
+                <!-- Card content -->
+                <div class="card-body">
+                    <!-- Text -->
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <div class="md-v-line"></div>
+                            <?php if(!$idPatientRdv){ ?>
+                                <h1>Ce patient n'a pas de rendez-vous !</h1>
+                            <?php }else{ ?>
+                                <?php foreach ($arrayPatientRDV as $rdv) { ?>
+                                    <p class="card-text">Date de rendez-vous : <?= $rdv->dateHour ?></p>
+                                <?php } ?>
+                            <?php } ?>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Card -->
+        </div>
+    </div>    
 </div>
 <?php include 'footer.php'; ?>

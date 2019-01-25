@@ -37,7 +37,7 @@
         }
         // Exercice4
         function ModifyPatient() {
-            $sql = $this->database->prepare('UPDATE `patients` SET lastname=:lastname, firstname=:firstname, birthdate=:birthdate, phone=:phone, mail=:mail WHERE `id` = :id');
+            $sql = $this->database->prepare('UPDATE `patients` SET `lastname`=:lastname, `firstname`=:firstname, `birthdate`=:birthdate, `phone`=:phone, `mail`=:mail WHERE `id` = :id');
             $sql->bindValue(':id', $this->id, PDO::PARAM_INT);
             $sql->bindValue(':lastname',$this->lastname,PDO::PARAM_STR);
             $sql->bindValue(':firstname',$this->firstname,PDO::PARAM_STR);
