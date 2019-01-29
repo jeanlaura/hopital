@@ -41,7 +41,7 @@
                     <div class="card-footer" align="right">
                         <!-- Button -->
                         <a href="modifier-rendezvous.php?idAppointment=<?= $rdv->id ?>" class="btn btn-warning">Modifier</a>
-                        <a href="" class="btn btn-danger">Supprimer</a>
+                        <a href="supprimer-rendezvous.php?idAppointment=<?= $rdv->id ?>" class="btn btn-danger">Supprimer</a>
                         <a href="liste-rendezvous.php" class="btn btn-primary">Retour à la liste des rendrez-vous</a>
                     </div>
                 </div>

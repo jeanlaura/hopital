@@ -46,6 +46,14 @@
             $sql->bindValue(':mail',$this->mail,PDO::PARAM_STR);
             return $sql->execute();
         }
+        //EXERCICE11
+        //SUPRESSION DES PATIENTS OUI OUI OUI !
+        function deletePatients() {
+            $sql = $this->database->prepare('DELETE FROM `patients` WHERE `id` = :id');
+            $sql->bindValue(':id', $this->id, PDO::PARAM_INT);
+            $sql->execute();
+            return $sql->fetchAll(PDO::FETCH_OBJ);
+        }
     }
 ?>
 

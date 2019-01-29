@@ -1,4 +1,5 @@
 <?php require_once 'controller/controllerListe-rendezvous.php'; ?>
+<?php require_once 'controller/controllerSupprimer-rendezvous.php'; ?>
 <?php include 'header.php'; ?>
 <!-- CONTENT PAGE -->
 <div class="content-wrap marginTop">
@@ -22,7 +23,7 @@
                                 <th><?= $rdv->dateHour ?></th>
                                 <th>
                                     <a href="rendezvous.php?id=<?= $rdv->id ?>" class="btn btn-success" >Afficher</a>
-                                    <a href="" class="btn btn-danger" >Supprimer</a>
+                                    <a href="supprimer-rendezvous.php?idAppointment=<?= $rdv->id ?>" class="btn btn-danger" >Supprimer</a>
                                 </th>
                             </tr>
                         <?php } ?>

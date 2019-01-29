@@ -53,5 +53,14 @@
             $sql->execute();
             return $sql->fetchAll(PDO::FETCH_OBJ);
         }
+        
+        //EXERCICE10
+        //SUPRESSION DES RDVS !
+        function deleteAppointments() {
+            $sql = $this->database->prepare('DELETE FROM `appointments` WHERE `id` = :id');
+            $sql->bindValue(':id', $this->id, PDO::PARAM_INT);
+            $sql->execute();
+            return $sql->fetchAll(PDO::FETCH_OBJ);
+        }
     }
 ?>

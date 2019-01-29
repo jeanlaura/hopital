@@ -1,4 +1,5 @@
 <?php require_once 'controller/controllerListe-patient.php'; ?>
+<?php require_once 'controller/controllerSupprimer-patients.php'; ?>
 <?php include 'header.php'; ?>
 <!-- CONTENT PAGE -->
 <div class="container marginTop">
@@ -19,7 +20,7 @@
                             <th><?= $row->firstname ?></th>
                             <th>
                                 <a href="profil-patient.php?id=<?= $row->id ?>" class="btn btn-success" >Afficher</a>
-                                <a href="" class="btn btn-danger" >Supprimer</a>
+                                <a href="supprimer-patients.php?id=<?= $row->id ?>" class="btn btn-danger" >Supprimer</a>
                             </th>
                         </tr>
                     <?php } ?>
