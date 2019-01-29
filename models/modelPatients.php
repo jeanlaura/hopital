@@ -46,11 +46,21 @@
             $sql->bindValue(':mail',$this->mail,PDO::PARAM_STR);
             return $sql->execute();
         }
+        
         //EXERCICE11
         //SUPRESSION DES PATIENTS OUI OUI OUI !
         function deletePatients() {
             $sql = $this->database->prepare('DELETE FROM `patients` WHERE `id` = :id');
             $sql->bindValue(':id', $this->id, PDO::PARAM_INT);
+            $sql->execute();
+            return $sql->fetchAll(PDO::FETCH_OBJ);
+        }
+        
+        //EXERCICE12
+        //SUPRESSION DES PATIENTS OUI OUI OUI !
+        function searchPatients() {
+            $sql = $this->database->prepare('SELECT * FROM `patients` WHERE `firstname` LIKE :firstname');
+            $sql->bindValue(':firstname', '%'.$this->firstname.'%', PDO::PARAM_INT);
             $sql->execute();
             return $sql->fetchAll(PDO::FETCH_OBJ);
         }
