@@ -85,7 +85,6 @@
                                     <p class="card-text">Date de rendez-vous : <?= $rdv->dateHour ?></p>
                                 <?php } ?>
                             <?php } ?>
-                            <p>Mon exercice il est ok alors chut Julien et Mehdi !!!!!</p>
                         </li>
                     </ul>
                 </div>
