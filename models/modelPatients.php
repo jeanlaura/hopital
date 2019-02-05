@@ -52,15 +52,14 @@
         function deletePatients() {
             $sql = $this->database->prepare('DELETE FROM `patients` WHERE `id` = :id');
             $sql->bindValue(':id', $this->id, PDO::PARAM_INT);
-            $sql->execute();
-            return $sql->fetchAll(PDO::FETCH_OBJ);
+            return $sql->execute();
         }
         
         //EXERCICE12
-        //SUPRESSION DES PATIENTS OUI OUI OUI !
-        function searchPatients() {
-            $sql = $this->database->prepare('SELECT * FROM `patients` WHERE `firstname` LIKE :firstname');
-            $sql->bindValue(':firstname', '%'.$this->firstname.'%', PDO::PARAM_INT);
+        //RECHERCHE DES PATIENTS OUI OUI OUI !
+        function searchPatients($search) {
+            $sql = $this->database->prepare('SELECT * FROM `patients` WHERE `lastname` LIKE :search OR `firstname` LIKE :search');
+            $sql->bindValue(':search', '%'.$search.'%', PDO::PARAM_INT);
             $sql->execute();
             return $sql->fetchAll(PDO::FETCH_OBJ);
         }

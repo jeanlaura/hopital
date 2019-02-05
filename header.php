@@ -29,9 +29,9 @@
                       <a class="nav-link" href="liste-rendezvous.php" class="btn btn-primary">Liste des rendez-vous</a>
                     </li>
                 </ul>
-                <form class="form-inline my-2 my-lg-0" method="post">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="imputSearch" id="imputSearch">
-                    <a href="rechercher-patients.php" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</a>
+                <form class="form-inline my-2 my-lg-0" method="post" action="liste-patient.php">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="inputSearch" id="inputSearch">
+                    <button class="btn btn-outline-success my-2 my-sm-0" name="search" type="submit">Search</button>
                 </form>
             </div>
         </nav>
